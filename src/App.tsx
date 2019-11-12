@@ -1,24 +1,25 @@
 import React from 'react';
-import logo from './logo.svg';
+import { useItems } from './items';
+import { Item } from './items/types';
 import './App.css';
 
+const ItemLi = (props: Item) => {
+  return (
+    <li key={props.id} className="item">{props.name}</li>
+  )
+}
+
 const App: React.FC = () => {
+  const { items } = useItems();
+
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <ul>
+        {items.map(ItemLi)}
+      </ul>
+      <div className="selectedItem">
+        SELECTED ITEM INFO
+      </div>
     </div>
   );
 }
