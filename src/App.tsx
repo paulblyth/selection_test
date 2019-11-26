@@ -3,9 +3,13 @@ import { useItems } from './items';
 import { Item } from './items/types';
 import './App.css';
 
-const ItemLi = (props: Item) => {
+type Props = {
+  item: Item;
+}
+
+const ItemLi = ({ item }: Props) => {
   return (
-    <li key={props.id} className="item">{props.name}</li>
+    <li key={item.id} className="item">{item.name}</li>
   )
 }
 
@@ -15,7 +19,7 @@ const App: React.FC = () => {
   return (
     <div className="App">
       <ul>
-        {items.map(ItemLi)}
+        {items.map(i => <ItemLi item={i} />)}
       </ul>
       <div className="selectedItem">
         SELECTED ITEM INFO
