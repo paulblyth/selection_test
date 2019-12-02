@@ -9,7 +9,7 @@ type Props = {
 
 const ItemLi = ({ item }: Props) => {
   return (
-    <li key={item.id} className="item">{item.name}</li>
+    <li className="item">{item.name}</li>
   )
 }
 
@@ -19,7 +19,7 @@ const App: React.FC = () => {
   return (
     <div className="App">
       <ul>
-        {items.map(i => <ItemLi item={i} />)}
+        {items.map(i => <ItemLi key={i.id} item={i} />)}
       </ul>
       <div className="selectedItem">
         SELECTED ITEM INFO
