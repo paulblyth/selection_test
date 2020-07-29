@@ -1,1 +1,3 @@
-export { useItems } from "./useItems";
+import reducer from "./reducer";
+
+export default reducer;

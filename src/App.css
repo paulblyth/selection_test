@@ -1,5 +1,9 @@
 .App {
   text-align: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
 }
 
 .App-logo {
@@ -19,4 +23,29 @@
 
 .App-link {
   color: #09d3ac;
+}
+
+.content {
+  display: flex;
+  justify-content: space-around;
+  width: 100%;
+}
+
+button {
+  background-color: rgb(8, 81, 156);
+  color: white;
+  font-size: 16;
+  font-weight: bold;
+  border: none;
+  border-radius: 3px;
+  padding: 16px;
+}
+
+button:hover {
+  background-color: rgba(15, 48, 107, 0.5);
+  cursor: pointer;
+}
+
+.item {
+  margin: 8px;
 }
