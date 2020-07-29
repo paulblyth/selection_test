@@ -3,6 +3,8 @@
 - Clicking on an item on the left will show that items description on the right
 - Only one item can be selected at a time
 
+[[/mockup/png|MOCK UP]]
+
 ## Extras
 
 - Add tests for the "Select an Item" feature
