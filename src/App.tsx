@@ -42,6 +42,7 @@ const App = connect(
   } = props;
   return (
     <div className="App">
+      <h1>Items App!</h1>
       <button
         className="addItem"
         disabled={items.length >= 10}
