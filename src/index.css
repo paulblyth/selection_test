@@ -20,6 +20,7 @@ code {
 }
 
 .item {
+  display: flex;
   text-align: left;
 }
 

@@ -1,40 +1,82 @@
 import React from "react";
-import { Dispatch } from "redux";
 import { Item } from "./items/types";
 import "./App.css";
 import { connect } from "react-redux";
-import { itemsSelector } from "./items/selectors";
+import { itemsSelector, selectedItemSelector } from "./items/selectors";
 import { AppState } from "./store";
 import items from "./items";
 import { ItemLi } from "./Item";
 
 const mapState = (state: AppState) => ({
-  items: itemsSelector(state)
+  items: itemsSelector(state),
+  selectedItem: selectedItemSelector(state),
 });
 
-const mapDispatch = (dispatch: Dispatch) => ({
-  addItem: () => dispatch(items.actions.addItem())
-});
+const mapDispatch = {
+  addItem: items.actions.addItem,
+  clearSelection: items.actions.clearSelection,
+  deleteItem: items.actions.deleteItem,
+  selectItem: items.actions.selectItem,
+};
 
 type Props = {
+  addItem: () => void;
+  clearSelection: () => void;
+  deleteItem: (item: Item) => void;
   items: Item[];
-  addItem: any;
+  selectItem: (item: Item) => void;
+  selectedItem?: Item;
 };
 
 const App = connect(
   mapState,
   mapDispatch
-)(({ items, addItem }: Props) => {
+)((props: Props) => {
+  const {
+    addItem,
+    clearSelection,
+    deleteItem,
+    items,
+    selectItem,
+    selectedItem,
+  } = props;
   return (
     <div className="App">
-      <button onClick={() => addItem()}>Add Item</button>
+      <button
+        className="addItem"
+        disabled={items.length >= 10}
+        onClick={() => addItem()}
+      >
+        Add Item
+      </button>
       <div className="content">
-        <ul>
-          {items.map(i => (
-            <ItemLi key={i.id} item={i} />
-          ))}
-        </ul>
-        <div className="selectedItem">SELECTED ITEM INFO</div>
+        <div className="items">
+          <h2>ITEMS</h2>
+          {items.length > 0 ? (
+            <ul>
+              {items.map((i) => (
+                <ItemLi
+                  key={i.id}
+                  item={i}
+                  onDelete={() => deleteItem(i)}
+                  onSelect={() => selectItem(i)}
+                  selected={selectedItem?.id === i.id}
+                />
+              ))}
+            </ul>
+          ) : (
+            "No items"
+          )}
+        </div>
+        <div className="selectedItem">
+          <h2>SELECTED ITEM INFO</h2>
+          {selectedItem && (
+            <>
+              <div>{selectedItem.description}</div>
+              <button onClick={() => clearSelection()}>Remove</button>
+            </>
+          )}
+        </div>
       </div>
     </div>
   );

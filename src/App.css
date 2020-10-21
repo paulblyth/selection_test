@@ -4,6 +4,10 @@
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  max-width: 1200px;
+  border: 1px solid #cccccc;
+  padding: 32px;
+  margin: 32px auto;
 }
 
 .App-logo {
@@ -29,9 +33,17 @@
   display: flex;
   justify-content: space-around;
   width: 100%;
+  margin-top: 32px;
 }
 
-button {
+.items,
+.selectedItem {
+  width: 50%;
+  border: 1px solid #cccccc;
+  padding: 16px;
+}
+
+button.addItem {
   background-color: rgb(8, 81, 156);
   color: white;
   font-size: 16;
@@ -39,13 +51,25 @@ button {
   border: none;
   border-radius: 3px;
   padding: 16px;
+  cursor: pointer;
 }
 
-button:hover {
+button.addItem:hover {
   background-color: rgba(15, 48, 107, 0.5);
-  cursor: pointer;
+}
+
+button.addItem[disabled] {
+  background-color: red;
+  opacity: 0.3;
+  cursor: not-allowed;
+}
+
+ul {
+  padding: 0;
 }
 
 .item {
   margin: 8px;
+  display: flex;
+  justify-content: space-between;
 }
