@@ -1,11 +1,43 @@
-# Requirements (Select an Item Feature)
+# Items App!
 
-- Clicking on an item on the left will show that items description on the right
-- Only one item can be selected at a time
+## Product Requirements
 
-![Mock Up](images/mockup.jpg)
+As a user of _Items App!_ I should be able to:
 
-## Extras
+- Add items (max 10)
+- Select items (only one selected at a time)
+- Remove a selected item
+- Delete items
+- Add a custom item (unimplemented)
 
-- Add tests for the "Select an Item" feature
-- Update styles to show which item is selected
+so that I can manage my items
+
+## Setup
+
+### Clone
+
+```bash
+git clone <repo>
+```
+
+### Install
+
+```bash
+npm i
+```
+
+### Run
+
+Either in separate terminal windows
+
+```bash
+npm start
+npm run cypress:open
+
+```
+
+Or in a single stream (potentially noisy):
+
+```bash
+npm run start:all
+```
