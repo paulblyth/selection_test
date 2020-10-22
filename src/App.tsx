@@ -44,6 +44,7 @@ const App = connect(
     <div className="App">
       <h1>Items App!</h1>
       <button
+        data-cy="add-item"
         className="addItem"
         disabled={items.length >= 10}
         onClick={() => addItem()}
@@ -74,7 +75,9 @@ const App = connect(
           {selectedItem && (
             <>
               <div>{selectedItem.description}</div>
-              <button onClick={() => clearSelection()}>Remove</button>
+              <button data-cy="deselect-item" onClick={() => clearSelection()}>
+                Deselect
+              </button>
             </>
           )}
         </div>

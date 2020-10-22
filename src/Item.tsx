@@ -18,10 +18,12 @@ export const ItemLi = ({ item, onDelete, onSelect, selected }: Props) => {
     >
       {item.name}{" "}
       <div className="controlButtons">
-        <button disabled={selected} onClick={onSelect}>
+        <button data-cy="select-item" disabled={selected} onClick={onSelect}>
           Select
         </button>
-        <button onClick={onDelete}>Delete</button>
+        <button data-cy="delete-item" onClick={onDelete}>
+          Delete
+        </button>
       </div>
     </li>
   );
